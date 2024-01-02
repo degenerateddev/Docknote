@@ -1,4 +1,4 @@
-const redis = require("lib/redis/client")
+import redis from "$lib/redis/client";
 
 
 /** @type {import('@sveltejs/kit').Handle} */

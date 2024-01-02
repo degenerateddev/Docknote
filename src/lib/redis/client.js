@@ -1,14 +1,16 @@
 import { createClient } from "redis";
 
-const client = createClient();
+const client = createClient({
+    url: process.env.REDIS_URL,
+})
 
-export var state = 0;
+var state = 0;
 
 client.on("error", (error) => {
     console.error(error);
 });
 
-export async function connect() {
+async function connect() {
     await client.connect();
     
     if (client.connected === true && state === 0) {
@@ -17,16 +19,16 @@ export async function connect() {
     console.log("Redis connected");
 } 
 
-export async function disconnect() {
+async function disconnect() {
     await client.quit();
     state = 0;
 }
 
-export async function save(key, value) {
+async function save(key, value) {
     await client.set(key, value);
 }
 
-export async function get(key) {
+async function get(key) {
     const note = await client.get(key);
 
     await del(key);
@@ -34,6 +36,8 @@ export async function get(key) {
     return note;
 }
 
-export async function del(key) {
+async function del(key) {
     await client.del(key);
 }
+
+export default { connect, disconnect, save, get, del, state };
