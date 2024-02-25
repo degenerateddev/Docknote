@@ -29,6 +29,6 @@ services:
     ports:
       - '2006:80'
     volumes:
-      - /home/tim/daniela-arnold/backend/main:/usr/share/nginx/html
+      - /home/tim/Docknote/public:/usr/share/nginx/html
     depends_on:
-      - frontend
+      - node
