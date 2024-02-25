@@ -6,7 +6,7 @@ services:
     container_name: 'note_redis'
     restart: always
     ports:
-    - '6379:6379'
+    - '6380:6379'
     env_file:
       - .env
 
@@ -16,9 +16,19 @@ services:
       dockerfile: Dockerfile
     container_name: 'note_node'
     ports:
-    - '3005:3000'
+    - '3006:3000'
     restart: always
     volumes:
       - .:/app
     depends_on:
       - redis
+
+  cdn:
+    image: nginx
+    container_name: 'autorin_cdn'
+    ports:
+      - '2006:80'
+    volumes:
+      - /home/tim/daniela-arnold/backend/main:/usr/share/nginx/html
+    depends_on:
+      - frontend
