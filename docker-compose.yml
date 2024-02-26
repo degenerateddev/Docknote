@@ -4,6 +4,8 @@ services:
   redis:
     image: redis:7.2.4-alpine
     container_name: 'note_redis'
+    environment:
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
     command: >
       --bind 0.0.0.0
       --save 60 1
