@@ -10,5 +10,9 @@ export const actions = {
                 const note_uuid = uuid();
 
                 await redis.save(note_uuid, content);
+
+                return {
+                        success: true
+                }
         }
 };
