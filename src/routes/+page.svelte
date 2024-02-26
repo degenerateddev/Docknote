@@ -20,7 +20,7 @@
     <div class="flex h-full">
         <div class="m-auto">
             {#if link !== ""}
-                <div class="text-xl cursor-pointer" on:click={() => {
+                <div class="text-xl cursor-pointer p-3 bg-black bg-opacity-50 text-white" on:click={() => {
                     navigator.clipboard.writeText(link);
                 }}>{link}</div>
             {/if}
