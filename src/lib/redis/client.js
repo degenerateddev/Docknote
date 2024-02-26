@@ -40,7 +40,7 @@ async function disconnect() {
  * @return {Promise<void>} A Promise that resolves when the key-value pair is saved
  */
 async function save(key, value) {
-    await client.set(key, value);
+    await client.set(key, value, { EX: 60 * 60 * 24 });
 }
 
 /**

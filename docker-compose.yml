@@ -9,8 +9,6 @@ services:
       --loglevel warning
       --requirepass ${REDIS_PASSWORD}
     restart: always
-    volumes:
-      - ./data/redis:/data
     networks:
       - docknote_main
 
@@ -40,8 +38,11 @@ services:
       - '2006:80'
     volumes:
       - /home/tim/Docknote/public:/usr/share/nginx/html
+      - ./default.conf:/etc/nginx/conf.d/default.conf
     depends_on:
       - node
+    networks:
+      - docknote_main
 
 networks:
   docknote_main:
