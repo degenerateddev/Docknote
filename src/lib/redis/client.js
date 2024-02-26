@@ -1,8 +1,8 @@
 import { createClient } from "redis";
-import { REDIS_URL } from "$env/static/private";
+//import { REDIS_URL } from "$env/static/private";
 
 const client = createClient({
-    url: REDIS_URL,
+    url: process.env["REDIS_URL"]
 })
 
 var state = 0;
