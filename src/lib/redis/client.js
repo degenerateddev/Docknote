@@ -4,22 +4,23 @@ const client = createClient({
     url: process.env["REDIS_URL"]
 })
 
-var state = 0;
-
 client.on("error", (error) => {
     console.error(error);
 });
 
 async function connect() {
-    await client.connect();
-    state = 1;
+    if (!client.connected) {
+        await client.connect();
 
-    console.log("Redis connected");
-} 
+        console.log("Redis connected");
+    }
+}
 
 async function disconnect() {
-    await client.quit();
-    state = 0;
+    if (client.connected) {
+        await client.quit();
+        console.log("Redis disconnected");
+    }
 }
 
 /**
@@ -56,4 +57,4 @@ async function del(key) {
     await client.del(key);
 }
 
-export default { connect, disconnect, save, get, del, state };
+export default { connect, disconnect, save, get, del };
