@@ -2,8 +2,8 @@
     import "../app.css";
 </script>
 
-<div class="flex flex-col justify-between h-screen">
-    <div class="flex justify-center">
+<div class="flex flex-col justify-between h-screen bg-gray-950">
+    <div class="flex justify-center p-5">
         <a href="/">
             <h1 class="text-3xl">Docknote</h1>
         </a>
@@ -13,7 +13,7 @@
         <slot />
     </div>
 
-    <div class="flex justify-between">
+    <div class="flex justify-between p-5">
         <a href="/about">About</a>
         <a href="/privacy">Privacy</a>
         <a href="/contact">Contact</a>

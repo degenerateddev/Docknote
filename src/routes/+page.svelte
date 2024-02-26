@@ -13,7 +13,8 @@
     <div class="flex h-full">
         <div class="m-auto">
             <form method="POST" use:enhance>
-                <input type="text" name="content" />
+                <textarea name="content" class="w-1/2 p-4 font-mono font-semibold text-lg bg-purple-800 text-white" cols="30" rows="10"></textarea>
+                <button type="submit" class="w-1/2 p-3 font-mono font-semibold text-lg bg-purple-500">Submit</button>
             </form>
             {#if success}
                 <div class="container mx-auto bg-green-600 rounded-md w-full p-5">
