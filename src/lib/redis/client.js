@@ -9,6 +9,7 @@ client.on("error", (error) => {
 });
 
 async function connect() {
+    console.log(client.connected)
     if (!client.connected) {
         await client.connect();
 
