@@ -23,6 +23,7 @@ services:
       dockerfile: Dockerfile
     container_name: 'note_node'
     environment:
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
       - REDIS_URL=${REDIS_URL}
     ports:
     - '3006:3000'
