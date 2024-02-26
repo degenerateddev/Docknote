@@ -4,11 +4,20 @@ services:
   redis:
     image: redis:7.2.4-alpine
     container_name: 'note_redis'
+    command: >
+      --bind note_redis
+      --save 60 1
+      --loglevel warning
+      --requirepass ${REDIS_PASSWORD}
     restart: always
     ports:
     - '6380:6379'
     env_file:
       - .env
+    volumes:
+      - ./data/redis:/data
+    networks:
+      - docknote_main
 
   node:
     build:
@@ -25,6 +34,8 @@ services:
       - .env
     depends_on:
       - redis
+    networks:
+      - docknote_main
 
   cdn:
     image: nginx
@@ -35,3 +46,7 @@ services:
       - /home/tim/Docknote/public:/usr/share/nginx/html
     depends_on:
       - node
+
+networks:
+  docknote_main:
+    driver: bridge
