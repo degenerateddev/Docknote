@@ -1,5 +1,4 @@
 import { createClient } from "redis";
-//import { REDIS_URL } from "$env/static/private";
 
 const client = createClient({
     url: process.env["REDIS_URL"]
@@ -12,10 +11,9 @@ client.on("error", (error) => {
 });
 
 async function connect() {
-    if (state === 0) {
-        await client.connect();
-        state = 1;
-    };
+    await client.connect();
+    state = 1;
+
     console.log("Redis connected");
 } 
 
