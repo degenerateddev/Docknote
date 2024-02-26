@@ -21,18 +21,14 @@ client.on("end", () => {
 });
 
 async function connect() {
-    console.log(isConnected)
     if (!isConnected) {
         await client.connect();
-
-        console.log("Redis connected");
     }
 }
 
 async function disconnect() {
     if (isConnected) {
         await client.quit();
-        console.log("Redis disconnected");
     }
 }
 

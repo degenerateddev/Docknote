@@ -1,7 +1,11 @@
+<script>
+    import "../app.css";
+</script>
+
 <div class="flex flex-col h-screen">
     <div class="flex justify-center">
         <a href="/">
-            <img src="/images/logo.png" alt="Logo" class="w-32 h-32" />
+            <h1 class="text-3xl">Docknote</h1>
         </a>
     </div>
     
