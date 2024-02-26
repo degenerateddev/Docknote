@@ -14,3 +14,5 @@ COPY package.json package-lock.json ./
 RUN npm install --production
 COPY --from=build /app/build ./build
 ENV NODE_ENV=production
+
+ENTRYPOINT [ "node", "./build" ]
