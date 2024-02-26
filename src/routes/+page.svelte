@@ -24,10 +24,10 @@
                     navigator.clipboard.writeText(link);
                 }}>{link}</div>
             {/if}
-            <form method="POST" use:enhance>
+            <form method="POST" use:enhance class="text-center">
                 <textarea name="content" class="w-full p-4 font-mono font-semibold text-lg bg-purple-800 text-white" cols="30" rows="10"></textarea>
                 <button type="submit" class="w-full p-3 font-mono font-semibold text-lg bg-purple-500">Submit</button>
-                <small class="text-center text-white">Your note will expire 24h after creation if not accessed!</small>
+                <small class="text-white">Your note will expire 24h after creation if not accessed!</small>
             </form>
             {#if success}
                 <div class="container mx-auto bg-green-600 rounded-md w-full p-5 m-5">
