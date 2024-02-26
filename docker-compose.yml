@@ -5,7 +5,7 @@ services:
     image: redis:7.2.4-alpine
     container_name: 'note_redis'
     command: >
-      --bind note_redis
+      --bind 0.0.0.0
       --save 60 1
       --loglevel warning
       --requirepass ${REDIS_PASSWORD}
@@ -14,8 +14,6 @@ services:
       - .env
     ports:
     - '6380:6379'
-    env_file:
-      - .env
     volumes:
       - ./data/redis:/data
     networks:
