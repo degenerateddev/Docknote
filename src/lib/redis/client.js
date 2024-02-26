@@ -12,9 +12,8 @@ client.on("error", (error) => {
 });
 
 async function connect() {
-    await client.connect();
-    
-    if (client.connected === true && state === 0) {
+    if (client.connected === false && state === 0) {
+        await client.connect();
         state = 1;
     };
     console.log("Redis connected");

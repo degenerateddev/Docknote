@@ -4,8 +4,6 @@ services:
   redis:
     image: redis:7.2.4-alpine
     container_name: 'note_redis'
-    environment:
-      - REDIS_PASSWORD=${REDIS_PASSWORD}
     command: >
       --bind redis
       --loglevel warning
