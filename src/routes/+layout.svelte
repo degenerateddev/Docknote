@@ -23,7 +23,7 @@
             </a>
         </div>
         
-        <div class="m-auto">
+        <div class="m-auto p-5">
             <slot />
         </div>
     

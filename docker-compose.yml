@@ -10,7 +10,7 @@ services:
       --requirepass ${REDIS_PASSWORD}
     restart: always
     networks:
-      - docknote_main
+      - main
 
   node:
     build:
@@ -29,7 +29,7 @@ services:
     depends_on:
       - redis
     networks:
-      - docknote_main
+      - main
 
   cdn:
     image: nginx
@@ -37,13 +37,13 @@ services:
     ports:
       - '2006:80'
     volumes:
-      - /home/tim/Docknote/public:/usr/share/nginx/html
+      - /public:/usr/share/nginx/html
       - ./default.conf:/etc/nginx/conf.d/default.conf
     depends_on:
       - node
     networks:
-      - docknote_main
+      - main
 
 networks:
-  docknote_main:
+  main:
     driver: bridge
